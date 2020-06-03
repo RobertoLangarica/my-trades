@@ -26,8 +26,8 @@ RUN ls
 RUN cat package.json
 # build and dependencies removal
 RUN quasar build \
-    npm uninstall \
-    npm uninstall -g @quasar/cli
+    && npm uninstall \
+    && npm uninstall -g @quasar/cli
 
 # Remove all except the build
 RUN mv dist /usr/src/ && rm -r /usr/src/app
