@@ -1,0 +1,41 @@
+{
+  "name": "nequ-frontend",
+  "version": "0.0.3",
+  "description": "NeQu Frontend boilerplate",
+  "productName": "NeQu Frontend",
+  "cordovaId": "",
+  "capacitorId": "",
+  "author": "Ramses <ramses@cuatromedios.com>",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0",
+    "container-dev":"docker run  --rm  -p 3001:3001 --name app --mount type=bind,source=$(pwd),target=/usr/src/app -v /usr/src/app/node_modules my_trades"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.18.1",
+    "quasar": "^1.0.0",
+    "vue-i18n": "^8.0.0"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.0.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "quasar-app-extension-api-wrapper": "0.0.2",
+    "quasar-app-extension-nequ-components": "^0.3.1",
+    "quasar-app-extension-vuelidate-rules": "^0.2.0"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
+}
