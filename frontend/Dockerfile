@@ -22,7 +22,7 @@ CMD ["quasar","dev"]
 
 # Build phase, removes any dependency and source code
 FROM dev as build
-
+RUN ls
 # build and dependencies removal
 RUN quasar build \
     npm uninstall \
@@ -33,4 +33,4 @@ RUN mv dist /usr/src/ && rm -r /usr/src/app
 
 WORKDIR /usr/src/dist
 
-# docker build -t langarica/my-trades:r-echo$(grep -w -i '"version"' package.json | cut -d '"' -f 4) https://github.com/RobertoLangarica/my-trades.git#release:frontend
+# docker build -t langarica/my-trades:r-$(grep -w -i '"version"' package.json | cut -d '"' -f 4) https://github.com/RobertoLangarica/my-trades.git#release:frontend
