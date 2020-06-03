@@ -19,6 +19,7 @@ CMD ["quasar","dev"]
 
 # This phase allows to run the current version as dev
 FROM dev AS dev_run
+
 # copy all the files to the container
 COPY . . 
 
@@ -30,12 +31,15 @@ CMD ["quasar","dev"]
 
 # This is the build phase an it removes any dependency after
 FROM dev as build
+RUN ls
 # build and dependencies removal
 RUN quasar build \
-    npm uninstall \
-    npm uninstall -g @quasar/cli
+    && npm uninstall \
+    && npm uninstall -g @quasar/cli
 
 # Remove all except the build
 RUN mv dist /usr/src/ && rm -r /usr/src/app
 
 WORKDIR /usr/src/dist
+
+# docker build -t langarica/my-trades:r-echo$(grep -w -i '"version"' package.json | cut -d '"' -f 4) https://github.com/RobertoLangarica/my-trades.git#release:frontend
