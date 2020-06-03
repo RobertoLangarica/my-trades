@@ -23,6 +23,7 @@ CMD ["quasar","dev"]
 # Build phase, removes any dependency and source code
 FROM dev as build
 RUN ls
+RUN cat package.json
 # build and dependencies removal
 RUN quasar build \
     npm uninstall \
