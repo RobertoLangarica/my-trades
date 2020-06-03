@@ -9,7 +9,7 @@ COPY package*.json ./
 
 # install dependencies
 RUN npm install \
-    npm install -g @quasar/cli
+    && npm install -g @quasar/cli
 
 # copy all the files to the container
 COPY . . 
