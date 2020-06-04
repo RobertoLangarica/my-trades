@@ -17,7 +17,7 @@ CMD ["quasar","dev"]
 FROM dev as build
 
 # build and dependencies removal
-RUN quasar build \
+RUN quasar build
 
 # Clean build
 FROM nginx:1.19.0-alpine AS clean_build
