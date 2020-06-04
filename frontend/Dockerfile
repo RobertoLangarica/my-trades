@@ -23,7 +23,7 @@ RUN ls
 
 # Clean build
 FROM nginx:1.19.0-alpine AS clean_build
-WORKDIR /usr/src/app
 # copy onli the build
-COPY --from=build /usr/src/app/dist .
-CMD []
+COPY --from=build /usr/src/app/dist/spa /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
