@@ -1,6 +1,7 @@
 #!/bin/bash
 
 imageName="my-trades-local"
+docker pull langarica/my-trades:dp-latest
 docker build -t $imageName --target dev .
 built=$?
 if [ "$built" == 0 ]; then        

@@ -13,6 +13,7 @@ if [ "$tmpDir" == 0 ]; then
     if [ "$clone" == 0 ]; then
         cd my-trades/frontend
         version=$(grep -w -i '"version"' package.json | cut -d '"' -f 4)
+        docker pull $imageName:dp-latest
         docker build -t $img1 -t $img2 .
         built=$?
         if [ "$built" == 0 ]; then
