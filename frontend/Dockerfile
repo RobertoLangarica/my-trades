@@ -18,6 +18,8 @@ FROM dev as build
 
 # build and dependencies removal
 RUN quasar build
+WORKDIR /usr/src/app/dist
+RUN ls
 
 # Clean build
 FROM nginx:1.19.0-alpine AS clean_build
