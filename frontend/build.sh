@@ -3,7 +3,7 @@
 wdir=$(pwd)
 mkdir temp
 tmpDir=$? 
-imageName=""
+imageName="langarica/my-trades"
 if [ "$tmpDir" == 0 ]; then
     cd temp
     git clone --single-branch --branch release https://github.com/RobertoLangarica/my-trades.git
