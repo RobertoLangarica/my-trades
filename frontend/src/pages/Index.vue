@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This sample frontend includes</h1>
+    <h1>This sample frontend includes includes</h1>
     <span>{{version}}</span>
     <h2>Extensions</h2>
     <ul>
@@ -24,6 +24,9 @@ export default {
     return {
       version: process.env.VERSION
     }
+  },
+  mounted () {
+    console.log('Mounted')
   }
 }
 </script>
