@@ -11,7 +11,7 @@
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
     "dev": "docker run  --rm  -p 3001:3001 --name app --mount type=bind,source=$(pwd),target=/usr/src/app -v /usr/src/app/node_modules my-trades-local",
-    "install-dev": "docker run  --rm  -p 3001:3001 --name app --mount type=bind,source=$(pwd),target=/usr/src/app -v /usr/src/app/node_modules my-trades-local npm install && quasar dev"
+    "install-dev": "docker run  --rm  -it -p 3001:3001 --name app --mount type=bind,source=$(pwd),target=/usr/src/app -v /usr/src/app/node_modules my-trades-local npm install && quasar dev"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

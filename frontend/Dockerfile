@@ -29,5 +29,5 @@ WORKDIR /usr/src/dist
 # Clean build
 FROM nginx:1.19.0-alpine AS clean_build
 WORKDIR /usr/src/app
-COPY --from=0 /usr/src/dist .
+COPY --from=0 . .
 CMD []
