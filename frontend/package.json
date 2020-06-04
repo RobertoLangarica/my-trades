@@ -1,6 +1,6 @@
 {
   "name": "nequ-frontend",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "NeQu Frontend boilerplate",
   "productName": "NeQu Frontend",
   "cordovaId": "",
@@ -16,7 +16,6 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
-    "moment": "^2.26.0",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0"
   },
