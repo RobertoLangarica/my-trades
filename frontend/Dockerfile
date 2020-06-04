@@ -22,7 +22,7 @@ RUN quasar build \
     && npm uninstall -g @quasar/cli
 
 # Remove all except the build
-RUN mv dist /usr/src/ && rm -r /usr/src/app
+RUN mv dist /usr/src/ && cd .. $$ rm -r app
 
 WORKDIR /usr/src/dist
 
