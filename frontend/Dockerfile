@@ -1,15 +1,8 @@
 # This stage install all the node dependencies an the quasar CLI
 # This stage is sufficient for development
-FROM node:13 AS dev
+FROM langarica/my-trades:dp-latest AS dev
 # directory for the app
 WORKDIR /usr/src/app
-
-# Copy package and pacakge-lock
-COPY package*.json ./
-
-# install dependencies
-RUN npm install \
-    && npm install -g @quasar/cli
 
 # copy all the files to the container
 COPY . . 
@@ -33,5 +26,8 @@ RUN mv dist /usr/src/ && rm -r /usr/src/app
 
 WORKDIR /usr/src/dist
 
+# Clean build
+FROM nginx:1.19.0-alpine AS clean_build
+WORKDIR /usr/src/app
+COPY --from=0 /usr/src/dist .
 CMD []
-# docker build -t langarica/my-trades:r-$(grep -w -i '"version"' package.json | cut -d '"' -f 4) -t langarica/my-trades https://github.com/RobertoLangarica/my-trades.git#release:frontend

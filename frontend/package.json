@@ -8,14 +8,15 @@
   "author": "Ramses <ramses@cuatromedios.com>",
   "private": true,
   "scripts": {
-    "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
-    "container-dev":"docker run  --rm  -p 3001:3001 --name app --mount type=bind,source=$(pwd),target=/usr/src/app -v /usr/src/app/node_modules my_trades"
+    "dev": "docker run  --rm  -p 3001:3001 --name app --mount type=bind,source=$(pwd),target=/usr/src/app -v /usr/src/app/node_modules my-trades-local",
+    "install-dev": "docker run  --rm  -p 3001:3001 --name app --mount type=bind,source=$(pwd),target=/usr/src/app -v /usr/src/app/node_modules my-trades-local npm install && quasar dev"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "moment": "^2.26.0",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0"
   },

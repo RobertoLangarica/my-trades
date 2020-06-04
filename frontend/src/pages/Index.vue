@@ -2,6 +2,7 @@
   <div>
     <h1>This sample frontend includes</h1>
     <span>{{version}}</span>
+    <span>{{test}}</span>
     <h2>Extensions</h2>
     <ul>
       <li><a href="https://github.com/cuatromedios/quasar-app-extension-vuelidate-rules" target="_blank">Vuelidate Rules</a></li>
@@ -18,15 +19,15 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   name: 'PageIndex',
   data () {
     return {
-      version: process.env.VERSION
+      version: process.env.VERSION,
+      test: moment().subtract(10, 'days').calendar()
     }
-  },
-  mounted () {
-    console.log('hola')
   }
 }
 </script>
