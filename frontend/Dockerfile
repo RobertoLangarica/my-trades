@@ -25,5 +25,5 @@ RUN ls
 FROM nginx:1.19.0-alpine AS clean_build
 WORKDIR /usr/src/app
 # copy onli the build
-COPY --from=0 /usr/src/app/dist .
+COPY --from=build /usr/src/app/dist .
 CMD []
