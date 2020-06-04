@@ -18,16 +18,10 @@ FROM dev as build
 
 # build and dependencies removal
 RUN quasar build \
-    && npm uninstall \
-    && npm uninstall -g @quasar/cli
-
-# Remove all except the build
-RUN mv dist /usr/src/ && cd .. $$ rm -r app
-
-WORKDIR /usr/src/dist
 
 # Clean build
 FROM nginx:1.19.0-alpine AS clean_build
 WORKDIR /usr/src/app
-COPY --from=0 /usr/src/ .
+# copy onli the build
+COPY --from=0 /usr/src/app/dist .
 CMD []
