@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This sample frontend includes includes</h1>
+    <h1>This sample frontend includes jajajaj</h1>
     <span>{{version}}</span>
     <h2>Extensions</h2>
     <ul>

@@ -3,4 +3,6 @@ node_modules
 .git
 .gitignore
 .editorconfig
-build.sh
+build_release.sh
+create_dependencies.sh
+create_dev.sh

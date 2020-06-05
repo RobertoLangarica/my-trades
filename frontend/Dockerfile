@@ -5,7 +5,7 @@ FROM langarica/my-trades:dp-latest AS dev
 WORKDIR /usr/src/app
 
 # copy all the files to the container
-COPY . . 
+COPY . .
 
 # Exposing the port for the app to run
 EXPOSE 3001
@@ -19,7 +19,6 @@ FROM dev as build
 # build and dependencies removal
 RUN quasar build
 WORKDIR /usr/src/app/dist
-RUN ls
 
 # Clean build
 FROM nginx:1.19.0-alpine AS clean_build
