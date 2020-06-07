@@ -6,3 +6,5 @@ node_modules
 build_release.sh
 create_dependencies.sh
 create_dev.sh
+.env
+.env.*
