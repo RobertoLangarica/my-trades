@@ -1,20 +1,20 @@
 #!/bin/bash
-exist_credentilas=0
+exist_credentials=0
 file=""
 
 if [ -f .env ]; then
-exist_credentilas=1
+exist_credentials=1
 file=.env 
 echo "Using: .env"
 elif [ -f .env.example ]; then
 file=.env.example
-exist_credentilas=1
+exist_credentials=1
 echo "Using: .env.example"
 else
-exist_credentilas=0
+exist_credentials=0
 fi
 
-if [ exist_credentilas ]; then
+if [ $exist_credentials -eq 1 ]; then
     DB_PASSWORD=$(grep DB_PASSWORD $file | cut -d "=" -f 2)
     DB_USERNAME=$(grep DB_USERNAME $file | cut -d "=" -f 2)
     DB_DATABASE=$(grep DB_DATABASE $file | cut -d "=" -f 2)
@@ -46,6 +46,7 @@ docker run --name db_server -d \
 
 # If postgres find something on the data directory it will skip any further initialization 
 # to avoid that we force the user and db initilization
-if [ $? ]; then
+run=$?
+if [[ $run -eq 0 && $exist_credentials -eq 1 ]]; then
     docker exec db_server /docker-entrypoint-initdb.d/init_db.sh
 fi
