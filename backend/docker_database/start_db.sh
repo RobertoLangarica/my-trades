@@ -31,5 +31,21 @@ PGDATA=/var/lib/postgresql/data/pgdata
 # When the DB is deployed in production the restart param should be --restart always
 # When the DB is deployed locally the restart param could be --restart unless-stopped
 ########
-docker run --name db_server -p 5432:5432 -e DB_PASSWORD=$DB_PASSWORD -e DB_USERNAME=$DB_USERNAME -e DB_DATABASE=$DB_DATABASE -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -e POSTGRES_USER=$POSTGRES_USER -e POSTGRES_DB=$POSTGRES_DB -e PGDATA=$POSTGRES_DB -v postgresData:/var/lib/postgresql/data --restart unless-stopped langarica/postgres
-# To stop it run the next command: docker rm $(docker stop db_server)
+docker run --name db_server -d \
+        -p 5432:5432 \
+        -v postgresData:/var/lib/postgresql/data \
+        --restart unless-stopped \
+        -e DB_PASSWORD=$DB_PASSWORD \
+        -e DB_USERNAME=$DB_USERNAME \
+        -e DB_DATABASE=$DB_DATABASE \
+        -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
+        -e POSTGRES_USER=$POSTGRES_USER \
+        -e POSTGRES_DB=$POSTGRES_DB \
+        -e PGDATA=$PGDATA \
+        langarica/postgres
+
+# If postgres find something on the data directory it will skip any further initialization 
+# to avoid that we force the user and db initilization
+if [ $? ]; then
+    docker exec db_server /docker-entrypoint-initdb.d/init_db.sh
+fi
