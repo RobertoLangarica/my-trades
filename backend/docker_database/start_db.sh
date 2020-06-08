@@ -31,6 +31,7 @@ PGDATA=/var/lib/postgresql/data/pgdata
 # When the DB is deployed in production the restart param should be --restart always
 # When the DB is deployed locally the restart param could be --restart unless-stopped
 ########
+imageName=registry.digitalocean.com/wizard/postgres
 docker run --name db_server -d \
         -p 5432:5432 \
         -v postgresData:/var/lib/postgresql/data \
@@ -42,7 +43,7 @@ docker run --name db_server -d \
         -e POSTGRES_USER=$POSTGRES_USER \
         -e POSTGRES_DB=$POSTGRES_DB \
         -e PGDATA=$PGDATA \
-        langarica/postgres
+        $imageName
 
 # If postgres find something on the data directory it will skip any further initialization 
 # to avoid that we force the user and db initilization

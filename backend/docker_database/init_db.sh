@@ -2,9 +2,9 @@
 
 if [ -n $DB_USERNAME ]; then
 
-    # This command is run as part of the postgres initialization and has no race conditions, but
-    # It is also run outside the image with a docker exec and a race condition could happen
+    # This command was designed to run inside a docker image from postgres as a step in initialization and as a docker exec for a postgress image
     
+    # Avoiding race conditions when the servees is not initialized yet
     serverError=2 # 2 is the error returned when can't connect to the server
     while [ $serverError -eq 2 ]; do
     psql -v ON_ERROR_STOP=1 -q --username "$POSTGRES_USER"

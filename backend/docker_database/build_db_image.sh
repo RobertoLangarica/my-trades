@@ -1,5 +1,5 @@
 #!/bin/bash
-image=langarica/postgres
+image=registry.digitalocean.com/wizard/postgres
 docker build -t $image .
 if [ $? ]; then
     docker push $image
